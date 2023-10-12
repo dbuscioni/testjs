@@ -1,0 +1,9 @@
+console.log va dichiarato dopo le variabili e funzioni altrimenti rispnde "undefined"
+Da "Console" di devtools posso disattivare messaggi di policy cliccando sulla rotella e flaggando "Selected context only" (probabilmente dipende da Ublock e altri adv blocker)
+
+DOM
+document.addEventListener
+DomContentLoaded = HTML caricato e DOM costruito
+load = tutto caricato (anche img e css)
+
+If you want to set Git Bash as your default shell, open the Terminal dropdown (next to the + icon) and select Select Default Profile. This will open a list of available shells, including Git Bash. Selecting Git Bash will set it as your default shell, and all future terminals will be opened with Git Bash.

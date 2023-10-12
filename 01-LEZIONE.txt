@@ -1,0 +1,135 @@
+JavaScript è stato creato con lo scopo di “dare vita alle pagine web”.
+
+I programmi che sfruttano questo linguaggio vengono chiamati script. Possono essere scritti direttamente nel documento HTML ed eseguiti in automatico al caricamento della pagina.
+
+Gli script vengono scritti ed eseguiti come testo semplice. Per questo non richiedono alcuna fase di preparazione o compilazione per essere eseguiti.
+
+Sotto questo aspetto, JavaScript è molto differente da un altro linguaggio chiamato Java.
+
+Evolvendosi, JavaScript è diventato un linguaggio completamente indipendente, le cui specifiche sono definite da ECMAScript, e adesso non ha quasi nulla in comune con Java.
+
+Attualmente, JavaScript può essere eseguito non solo nei browser, ma anche nei server web e in altri ambienti che supportano il motore JavaScript (JavaScript engine).
+
+Il browser ha un suo motore JavaScript integrato, chiamato alle volte “JavaScript Virtual Machine”.
+
+Esistono altri motori JavaScript, tra cui:
+
+V8 – per Chrome e Opera.
+SpiderMonkey – per Firefox.
+
+## Cosa può fare JavaScript a livello browser?
+JavaScript, al giorno d’oggi, è un linguaggio di programmazione “sicuro”. Non consente alcun accesso di basso livello alla memoria o alla CPU. Questo perché è stato creato con lo scopo di funzionare nei browser, che non richiedono questi tipi di privilegi.
+
+Le capacità di JavaScript dipendono molto dall’ambiente in cui lo si esegue. Ad esempio, Node.js supporta funzioni che consentono a JavaScript di scrivere/leggere file, eseguire richieste web, etc.
+
+Integrato nel browser Javascript può fare qualsiasi cosa legata alla manipolazione della pagina, all’interazione con l’utente e con il server.
+
+Ad esempio, è possibile:
+
+Aggiungere HTML alla pagina, cambiare il contenuto esistente, modificare lo stile.
+Reagire alle azioni dell’utente, click del mouse, movimenti del cursore, input da tastiera.
+Inviare richieste al server tramite la rete, caricare e scaricare file (con l’ausilio diAJAX e COMET).
+Prelevare e impostare cookies, interrogare l’utente, mostrare messaggi.
+Memorizzare i dati client-side (“memorizzazione locale”).
+
+## Cosa NON può fare JavaScript a livello browser?
+Per la sicurezza dell’utente, le possibilità di JavaScript nel browser sono limitate. L’intento è di prevenire che una pagina “maligna” tenti di accedere alle informazioni personali o di danneggiare i dati degli utenti.
+
+Esempi di queste restrizioni possono essere:
+
+JavaScript, in una pagina web, non può leggere o scrivere in qualsiasi file nell’hard disk, né copiare o eseguire programmi. Non ha accesso diretto alle funzioni del sistema operativo.
+
+I moderni browser gli consentono di lavorare con i file, sempre con un accesso limitato e comunque solo se il comando proviene da utente, come il “dropping” di un file nella finestra del browser, o con la selezione tramite il tag <input>.
+
+Ci sono anche funzionalità che consentono di interagire con la camera/microfono e altri dispositivi, ma in ogni caso richiedono il permesso esplicito dell’utente. Quindi una pagina con JavaScript abilitato non può attivare la web-cam di nascosto, osservare i nostri comportamenti e inviare informazioni alla CIA.
+
+Pagine o schede diverse generalmente non sono a conoscenza dell’esistenza delle altre. In certi casi, tuttavia, può capitare; ad esempio quando una finestra ne apre un’altra tramite JavaScript. Ma anche in questo caso, il codice JavaScript non può accedere all’altra pagina se non appartiene allo stesso sito (stesso dominio, protocollo o porta).
+
+Questa viene definita la “Same Origin Policy” (“Politica di Appartenenza alla Stessa Origine”). Per poter aggirare questo limite, entrambe le pagine devono contenere uno speciale codice JavaScript che consente di gestire lo scambio di dati.
+
+Questa limitazione è sempre dovuta alla sicurezza dell’utente. Una pagina proveniente da http://anysite.com che è stata aperta da un utente, ad esempio, non deve essere in grado di accedere ad un’altra scheda del browser con l’URL http://gmail.com e rubarne le informazioni.
+
+JavaScript può facilmente comunicare con il server da cui la pagina proviene. Ma la sua abilità di ricevere dati da altri siti/domini è limitata. Sebbene sia possibile, sono richieste esplicite autorizzazioni (passate tramite HTTP headers) dall’indirizzo remoto. Ancora una volta, una limitazione dovuta alla sicurezza.
+
+
+MANUALE
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+COMPATIBILITA'
+Caniuse.com
+https://kangax.github.io/compat-table
+
+
+La segnatura moderna
+Il tag <script> ha un paio di attributi che vengono utilizzati raramente, ma è comunque possibile trovarli nei vecchi codici:
+
+L’attributo type: <script type=…>
+Il precedente standard HTML, HTML4, richiedeva che lo script avesse una proprietà type. Solitamente era type="text/javascript". Ora non è più richiesto. Inoltre, lo standard attuale HTML, ha completamente cambiato il suo significato. Ora può essere utilizzato per i moduli JavaScript. Ma questo è un argomento avanzato, parleremo dei moduli più avanti nel tutorial.
+
+L’attributo language: <script language=…>
+Questo attributo aveva lo scopo di mostrare il linguaggio utilizzato dallo script. Ora questo linguaggio non ha più molto senso, poiché JavaScript è il linguaggio utilizzato di default. Quindi non ha più senso utilizzarlo.
+
+I commenti prima e dopo gli script.
+Nei vecchi libri e tutorial, potreste trovare commenti all’interno del tag <script>, come questo:
+
+<script type="text/javascript"><!--
+    ...
+//--></script>
+Questo trucco non viene più utilizzato. Questi commenti avevano lo scopo di nascondere il codice JavaScript ai vecchi browser che non erano in grado di elaborare il tag <script>. Poiché i browser rilasciati negli ultimi 15 anni non hanno più questo problema, questo tipo di commenti possono aiutarti ad identificare codici molto vecchi.
+
+Il beneficio di inserire gli script in file separati è che il browser andrà a scaricarli e li memorizzerà nella sua cache.
+
+Se src è impostato, il contenuto all’interno di script verrà ignorato.
+Quindi un tag <script> non può avere sia src che codice incorporato.
+
+Questo non funziona:
+
+<script src="file.js">
+  alert(1); // il contenuto viene ignorato, perché src è impostato
+</script>
+
+##ESCAPE
+alert( 'I\'m the Walrus!' ); // I'm the Walrus!
+alert( `I'm the Walrus!` ); // I'm the Walrus!
+alert( `The backslash: \\` ); // The backslash: \
+
+##La parola chiave let
+
+La parola chiave let è utilizzata per dichiarare variabili legate al blocco* entro il quale compare. Dichiarare una variabile con let limita dunque lo scope a quello specifico blocco. Ciò significa anche che non andrà a sovrascrivere variabili globali e non sarà accessibile tramite l’oggetto window.
+
+*Un "blocco" è definito attraverso le parentesi graffe { e } e contiene porzioni di codice che sono "a se" rispetto al codice globale.
+
+let i = 0;
+if (true) {
+let i = 1;
+}
+console.log(i); // 0
+
+##La parola chiave var
+
+Una variabile dichiarata attraverso la parola chiave var non è limitata al blocco, ma può essere utilizzata all’interno della funzione in cui si trova. La variabile ha quindi uno scope di funzione. In questo caso, la variabile può essere richiamata al di fuori del blocco in cui è dichiarata in quanto non è limitata allo scope di blocco. Ha inoltre scope globale, essendo accessibile tramite l’oggetto window.
+
+A differenza della variabile let, la variabile var può essere ri-dichiarata all’interno dello stesso scope. In questo caso il primo valore sarà semplicemente rimpiazzato.
+
+var x = 10;
+// qui x è 10
+{
+let x = 2;
+// qui x è 2
+}
+// qui x è 10
+
+##const
+Le variabili dichiarate con const si comportano in maniera simile a quelle dichiarate con let, con la differenza che non possono essere riassegnate.
+E' prassi indicarle TUTTE_MAIUSCOLE
+
+
+Ora un esempio più complesso di operatore
+ Se ci sono due numeri prima di una stringa, prima vengono sommati e il risultato convertito in stringa:
+ (2+2 e affiancato l'1):
+alert(2 + 2 + '1' ); // "41" non "221"
+
+In questo esempio il primo operando è una stringa, quindi il compilatore tratterà anche i successivi operandi come stringhe. I 2 verranno concatenati alla stringa 1: '1' + 2 = 12 quindi '12' + 2 = '122'.
+alert('1' + 2 + 2 ); // "122" non "14"
+
+let num = 1 ;
+num *= 3 + 5; //8 e non 15 perché l'operatore *= ha minor precedenza rispetto alle operazioni

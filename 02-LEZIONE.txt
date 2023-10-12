@@ -1,0 +1,22 @@
+Dichiarare oggetto in 2 modi:
+let user = new Object(); // sintassi "costruttore oggetto"
+let user = {};  // sintassi "oggetto letterale"
+
+## SUGLI OGGETTI vs VARIABILI
+let str = "Hello";
+
+str.test = 5; // (*)
+
+alert(str.test);
+Potremmo ottenere due diversi risultati:
+
+undefined
+Un errore (strict mode).
+Perché? Proviamo ad esaminare cosa succede alla riga (*):
+
+Quando si prova ad accedere ad una proprietà di str, viene creato un “oggetto contenitore”.
+L’operazione di accesso viene eseguito su questo. Quindi l’oggetto ottiene la proprietà test.
+L’operazione termina e “l’oggetto contenitore” viene distrutto.
+Quindi, nell’ultima riga di codice, str non possiede alcuna traccia di quella proprietà. Viene creato un nuovo oggetto per ogni operazione su un tipo stringa.
+
+Questo esempio mostra chiaramente che le variabili primitive non sono oggetti.
