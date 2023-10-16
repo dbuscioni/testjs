@@ -10,4 +10,4 @@ if(hasValue) {
 } else {
     console.log('Array does not contain a value.');
 }
-//add
+//add new comment
